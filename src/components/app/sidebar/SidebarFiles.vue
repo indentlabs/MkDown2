@@ -14,7 +14,18 @@
         class="cursor-pointer"
         @click="changeActive(file.id)"
       >
-        <p class="text-overflow py-1 flex-1 pr-4">{{ file.title }}</p>
+        <div class="py-1 flex-1 pr-4">
+          <p class="text-overflow">
+            {{ file.title }}
+            <!-- TODO: long titles overflow and menu gets covered up -->
+          </p>
+          <p class="text-gray-200">
+            {{ file.description }}
+          </p>
+          <p class="text-gray-400">
+            {{ file.word_count || 0 }} word{{ file.word_count === 1 ? '' : 's'}}
+          </p>
+        </div>
         <ui-popover>
           <template #trigger>
             <v-mdi name="mdi-dots-horizontal" class="cursor-pointer"></v-mdi>
@@ -22,7 +33,7 @@
           <ui-list class="space-y-1">
             <ui-list-item class="cursor-pointer" @click="editFile(file.id, file)">
               <v-mdi name="mdi-pencil" class="mr-4 -ml-1"></v-mdi>
-              Rename
+              Edit title & description
             </ui-list-item>
             <ui-list-item
               v-if="files.length !== 1"
@@ -38,17 +49,25 @@
     </ui-list>
     <ui-modal v-model="state.showRenameModal" content-class="max-w-sm">
       <template #header>
-        <p>Rename File</p>
+        <p>Edit title & description</p>
       </template>
       <input
         id="name"
         v-model="state.tempTitle"
-        v-autofocus
+        class="rounded-xl bg-gray-100 bg-opacity-5 border-opacity-10 transition focus:ring focus:ring-opacity-50 py-2 px-4 transition w-full"
+      />
+      <input
+        id="description"
+        v-model="state.tempDescription"
         class="rounded-xl bg-gray-100 bg-opacity-5 border-opacity-10 transition focus:ring focus:ring-opacity-50 py-2 px-4 transition w-full"
       />
       <div class="flex items-center space-x-2 mt-8">
-        <ui-button class="w-6/12" @click="state.showRenameModal = false"> Cancel </ui-button>
-        <ui-button variant="primary" class="w-6/12" @click="renameFile"> Rename </ui-button>
+        <ui-button class="w-6/12" @click="state.showRenameModal = false">
+          Cancel
+        </ui-button>
+        <ui-button variant="primary" class="w-6/12" @click="renameFile">
+          Save changes
+        </ui-button>
       </div>
     </ui-modal>
   </div>
@@ -65,6 +84,7 @@ export default {
     const state = shallowReactive({
       editId: '',
       tempTitle: '',
+      tempDescription: '',
       showRenameModal: false,
     });
 
@@ -74,29 +94,38 @@ export default {
       store.dispatch('files/add', {
         activate: true,
         data: {
-          title: 'untitled',
-          content: '',
+          title: 'Untitled document',
+          description: '',
+          content: "Write as little or as much as you'd like!",
         },
       });
     }
     function changeActive(id) {
       store.commit('files/changeActive', id);
     }
-    function editFile(id, { title }) {
+    function editFile(id, { title, description }) {
       closeAllTooltip();
       state.editId = id;
       state.tempTitle = title;
+      state.tempDescription = description;
       state.showRenameModal = true;
     }
     function renameFile() {
       store.commit('files/updateFile', {
         id: state.editId,
         key: 'title',
-        value: state.tempTitle || 'untitled',
+        value: state.tempTitle || 'Untitled document'
+      });
+      store.commit('files/updateFile', {
+        id: state.editId,
+        key: 'description',
+        value: state.tempDescription || ''
       });
 
       state.showRenameModal = false;
-      state.editId = state.tempTitle = '';
+      state.editId = '';
+      state.tempTitle = '';
+      state.tempDescription = '';
     }
     function deleteFile() {
       store.dispatch('files/delete');
