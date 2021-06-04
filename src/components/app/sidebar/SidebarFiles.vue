@@ -1,7 +1,7 @@
 <template>
   <div class="mt-4 lg:mt-0">
     <div class="flex items-center mb-4">
-      <p class="text-gray-200 flex-1">Documents</p>
+      <p class="text-gray-200 flex-1">Outline</p>
       <ui-button icon class="text-primary" @click="addFile">
         <v-mdi name="mdi-plus" size="20"></v-mdi>
       </ui-button>
