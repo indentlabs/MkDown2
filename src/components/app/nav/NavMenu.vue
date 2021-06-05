@@ -1,11 +1,14 @@
 <template>
   <div class="menu flex items-center">
+    <!--
     <nav-menu-item v-bind="{ items }" class="hidden md:block mr-4" @select="previewFile">
       Preview as
     </nav-menu-item>
+    -->
     <nav-menu-item v-bind="{ items }" class="hidden md:block mr-4" @select="exportFile">
-      Export as
+      Export
     </nav-menu-item>
+    <!--
     <nav-menu-item :items="importItems">
       Import
       <template #item="{ name, type }">
@@ -18,6 +21,7 @@
         {{ name }}
       </template>
     </nav-menu-item>
+    -->
     <nav-menu-item :items="settingsItem" hide-arrow class="mx-4">
       <template #trigger>
         <ui-button icon>
@@ -33,9 +37,11 @@
         {{ name }}
       </template>
     </nav-menu-item>
+    <!--
     <a href="https://github.com/kholid060/mkdown2" target="_blank" rel="noreferrer noopener">
       <v-mdi name="mdi-github"></v-mdi>
     </a>
+    -->
   </div>
 </template>
 <script>
