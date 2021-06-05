@@ -8,13 +8,18 @@
   >
     <div class="mb-8 flex items-center">
       <div class="flex-1">
-        <p class="text-xl font-bold inline-block">Really long book name that will probably wrap, maybe even twice or thrice</p>
+        <p class="text-xl font-bold inline-block">
+          Really long book name that will probably wrap, maybe even twice or thrice
+        </p>
         <p class="text-gray-300">
           by
           <span class="text-green-500">Your Name</span>
         </p>
       </div>
-      <v-mdi name="mdi-close" class="cursor-pointer" @click="$emit('close')"></v-mdi>
+      <div class="align-top">
+        <!-- TODO: switch documents? -->
+        <v-mdi name="mdi-close" class="cursor-pointer flex-1" @click="$emit('close')"></v-mdi>
+      </div>
     </div>
     <sidebar-menu class="md:hidden"></sidebar-menu>
     <sidebar-files></sidebar-files>

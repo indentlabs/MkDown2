@@ -33,7 +33,7 @@ export default function (element, options = {}) {
     tabSize: 2,
     keyMap: 'sublime',
     mode: 'text/x-gfm',
-    theme: 'ayu-mirage',
+    theme: 'ayu-mirage', // TODO: add a few user-chosen themes
     highlightFormatting: true,
     lineNumbers: true,
     lineWrapping: true,

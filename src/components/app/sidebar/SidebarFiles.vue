@@ -33,7 +33,7 @@
           <ui-list class="space-y-1">
             <ui-list-item class="cursor-pointer" @click="editFile(file.id, file)">
               <v-mdi name="mdi-pencil" class="mr-4 -ml-1"></v-mdi>
-              Edit title & description
+              Edit title & summary
             </ui-list-item>
             <ui-list-item
               v-if="files.length !== 1"
@@ -49,17 +49,24 @@
     </ui-list>
     <ui-modal v-model="state.showRenameModal" content-class="max-w-sm">
       <template #header>
-        <p>Edit title & description</p>
+        <p>Edit title & summary</p>
       </template>
+      <div>
+        Title
+      </div>
       <input
         id="name"
         v-model="state.tempTitle"
         class="rounded-xl bg-gray-100 bg-opacity-5 border-opacity-10 transition focus:ring focus:ring-opacity-50 py-2 px-4 transition w-full"
       />
-      <input
+      <br /><br />
+      <div>
+        Summary
+      </div>
+      <textarea
         id="description"
         v-model="state.tempDescription"
-        class="rounded-xl bg-gray-100 bg-opacity-5 border-opacity-10 transition focus:ring focus:ring-opacity-50 py-2 px-4 transition w-full"
+        class="rounded-xl scroll bg-gray-100 bg-opacity-5 border-opacity-10 transition focus:outline-none focus:ring focus:ring-opacity-50 py-2 px-4 transition w-full"
       />
       <div class="flex items-center space-x-2 mt-8">
         <ui-button class="w-6/12" @click="state.showRenameModal = false">
