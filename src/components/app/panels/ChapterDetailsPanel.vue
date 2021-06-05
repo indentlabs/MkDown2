@@ -2,12 +2,17 @@
   <div
     class="bg-indigo-900 border-l-4 border-indigo-800 px-4 py-3"
   >
+    <!-- TODO: previous chapter link
+    <div class="flex-1">
+      previous chapter
+    </div>
+    -->
     <div class="flex">
       <div class="py-1 pr-2">
         <v-mdi name="mdi-pencil" size="24"></v-mdi>
       </div>
       <div>
-        <p class="font-bold">chapter title</p>
+        <p class="font-bold">activeFile.title</p>
         <p class="text-sm scroll">activeFile.description || 'Click here to add an outline'</p>
         <!-- TODO: characters in this scene -->
         <!-- TODO: locations in this scene -->
@@ -19,6 +24,11 @@
         <!-- TODO: show previous/next chapter links at bottom/top of sidebar -->
       </div>
     </div>
+    <!-- TODO: next chapter link
+    <div class="flex-1">
+      next chapter
+    </div>
+    -->
   </div>
 </template>
 <script>
@@ -30,11 +40,7 @@ export default {
   setup() {
     const store = useStore();
 
-    const state = shallowReactive({
-      editId: '',
-      tempTitle: '',
-      tempDescription: ''
-    });
+    const state = shallowReactive({ });
 
     const files = computed(() => store.getters['files/all']);
 
