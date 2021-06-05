@@ -6,10 +6,7 @@
     </nav-menu-item>
     -->
     <!-- TODO: export settings modal -->
-    <nav-menu-item v-bind="{ items }" class="hidden md:block mr-4" @select="exportFile">
-      Export
-    </nav-menu-item>
-    <nav-menu-item :items="importItems">
+    <nav-menu-item :items="importItems" class="mr-4">
       Import
       <template #item="{ name, type }">
         <input
@@ -20,6 +17,9 @@
         />
         {{ name }}
       </template>
+    </nav-menu-item>
+    <nav-menu-item v-bind="{ items }" class="hidden md:block" @select="exportFile">
+      Export
     </nav-menu-item>
     <nav-menu-item :items="settingsItem" hide-arrow class="mx-4">
       <template #trigger>
@@ -58,7 +58,7 @@ export default {
     const settingsItem = [
       { id: 'autoSave',   name: 'Auto Save' },
       { id: 'syncScroll', name: 'Sync Scroll' },
-      { id: 'something',  name: 'Something' }
+      { id: 'darkTheme',  name: 'Dark Theme' }
     ];
 
     const settings = computed(() => store.state.settings);

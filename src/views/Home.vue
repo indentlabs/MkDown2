@@ -1,8 +1,8 @@
 <template>
   <main>
-    <app-nav @showSidebar="state.showSidebar = true"></app-nav>
+    <app-nav @showSidebar="state.showSidebar = true" @showWorldbar="state.showWorldbar = true"></app-nav>
     <app-sidebar v-if="state.showSidebar" @close="state.showSidebar = false"></app-sidebar>
-    <!-- TODO: add world sidebar here / ctrl+f showWorldSidebar -->
+    <app-worldbar v-if="state.showWorldbar" @close="state.showWorldbar = false"></app-worldbar>
     <div v-if="state.retrieved" class="flex relative" style="height: calc(100vh - 64px)">
       <chapter-details-panel
         v-if="state.showChapterDetails"
@@ -40,16 +40,18 @@ import AppNav from '~/components/app/AppNav.vue';
 import AppEditor from '~/components/app/AppEditor.vue';
 import AppPreview from '~/components/app/AppPreview.vue';
 import AppSidebar from '~/components/app/AppSidebar.vue';
+import AppWorldbar from '~/components/app/AppWorldbar.vue';
 import ChapterDetailsPanel from '~/components/app/panels/ChapterDetailsPanel.vue';
 
 export default {
-  components: { AppNav, AppEditor, AppPreview, AppSidebar, ChapterDetailsPanel },
+  components: { AppNav, AppEditor, AppPreview, AppSidebar, AppWorldbar, ChapterDetailsPanel },
   setup() {
     const store = useStore();
 
     const state = shallowReactive({
       retrieved:          false,
       showSidebar:        false,
+      showWorldbar:       false,
       showPreview:        false,
       showChapterDetails: true
     });

@@ -3,7 +3,7 @@
     <ui-button icon class="mr-4" @click="$emit('showSidebar', true)">
       <v-mdi name="mdi-book"></v-mdi>
     </ui-button>
-    <ui-button icon class="mr-4" @click="$emit('showWorldSidebar', true)">
+    <ui-button icon class="mr-4" @click="$emit('showWorldbar', true)">
       <v-mdi name="mdi-earth"></v-mdi>
     </ui-button>
     <nav-toolbar class="flex-1 mr-6"></nav-toolbar>
@@ -16,6 +16,6 @@ import NavMenu from './nav/NavMenu.vue';
 
 export default {
   components: { NavToolbar, NavMenu },
-  emits: ['showSidebar'],
+  emits: ['showSidebar', 'showWorldbar'],
 };
 </script>
