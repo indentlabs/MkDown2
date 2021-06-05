@@ -58,8 +58,9 @@ export default {
     const fileMenu = useFileMenu(store);
 
     const settingsItem = [
-      { id: 'autoSave', name: 'Auto Save' },
+      { id: 'autoSave',   name: 'Auto Save' },
       { id: 'syncScroll', name: 'Sync Scroll' },
+      { id: 'something',  name: 'Something' }
     ];
 
     const settings = computed(() => store.state.settings);

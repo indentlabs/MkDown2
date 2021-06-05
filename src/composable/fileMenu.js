@@ -5,7 +5,8 @@ export function useFileMenu(store) {
   const items = [
     { id: 'markdown', name: 'Markdown' },
     { id: 'html', name: 'HTML' },
-    { id: 'styled-html', name: 'Styled HTML' },
+    // { id: 'styled-html', name: 'Styled HTML' },
+    { id: 'pdf', name: 'PDF' },
   ];
   const importItems = [
     { id: 'markdown', name: 'Markdown File', type: 'text/markdown, .md' },

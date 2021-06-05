@@ -2,11 +2,12 @@
   <main>
     <app-nav @showSidebar="state.showSidebar = true"></app-nav>
     <app-sidebar v-if="state.showSidebar" @close="state.showSidebar = false"></app-sidebar>
+    <!-- TODO: add world sidebar here / ctrl+f showWorldSidebar -->
     <div v-if="state.retrieved" class="flex relative" style="height: calc(100vh - 64px)">
 
       <!-- TODO: component-ize this and give it a state.showChapterMeta condition -->
       <div
-        class="bg-indigo-900 border-r-4 border-indigo-800 px-4 py-3 lg:w-3/12"
+        class="bg-indigo-900 border-l-4 border-indigo-800 px-4 py-3 lg:w-2/12"
       >
         <div class="flex">
           <div class="py-1 pr-2">
@@ -14,19 +15,15 @@
           </div>
           <div>
             <p class="font-bold">{{ activeFile.title }}</p>
-            <p class="text-sm scroll">{{ activeFile.description || 'Click here to start building an outline' }}</p>
-            <!--
-            <p>
-              TODO: characters in this scene
-            </p>
-            -->
-            <!--
-            <p>
-              TODO: locations in this scene
-            </p>
-            -->
+            <p class="text-sm scroll">{{ activeFile.description || 'Click here to add an outline' }}</p>
+            <!-- TODO: characters in this scene -->
+            <!-- TODO: locations in this scene -->
             <!-- TODO: chapter outline -->
             <!-- TODO: common keyboard controls help/reminder -->
+            <!-- TODO: created at / last edited at -->
+            <!-- TODO: word count / reader time estimate -->
+            <!-- TODO: main idea, themes, symbols, motifs, key facts -->
+            <!-- TODO: show previous/next chapter links at bottom/top of sidebar -->
           </div>
         </div>
       </div>
