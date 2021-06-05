@@ -1,7 +1,7 @@
 export default {
   state: () => ({
     syncScroll: true,
-    autoSave: true,
+    autoSave:   true,
   }),
   mutations: {
     update(state, { key, value }) {

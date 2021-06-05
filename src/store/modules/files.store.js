@@ -69,13 +69,12 @@ export default {
         const activeFile = localStorage.getItem('activeFile');
 
         if (files === null) {
-          const defaultContent =
-            '<a href="https://github.com/kholid060/MkDown2" target="_blank">\n![Github](https://img.shields.io/github/stars/kholid060/MkDown2)\n</a>\n# MkDown\n\nMkDown is an online markdown editor built with [vueJs](https://vuejs.org). How to use MkDown Markdown Editor:\n\n- Type some markdown in left side\n- See the preview on right side\n- And Voilà\n\n## Feature\n\n- Import Markdown file from your pc\n- Import your HTML file and convert it to markdown\n- Export your document as a Markdown file, HTML or HTML styled file';
+          const defaultContent = '# Writing with Asimov\n\nIn the beginning, something **amazing** happened! You can write as little or as much here and see your document automatically format itself to the right. To get started, just edit this text!\n\n## Adding more chapters\n\nAs you write more, you may want to add more chapters. You can do so by clicking the book in the top-left. When you export, all of your chapters get concatenated into a single document.\n\n\n*Happy writing!*';
 
           dispatch('add', {
             activate: true,
             data: {
-              title: 'Welcome!!',
+              title: 'Untitled chapter',
               content: defaultContent,
             },
           });
