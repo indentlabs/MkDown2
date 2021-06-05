@@ -4,30 +4,11 @@
     <app-sidebar v-if="state.showSidebar" @close="state.showSidebar = false"></app-sidebar>
     <!-- TODO: add world sidebar here / ctrl+f showWorldSidebar -->
     <div v-if="state.retrieved" class="flex relative" style="height: calc(100vh - 64px)">
-
-      <!-- TODO: component-ize this and give it a state.showChapterMeta condition -->
-      <div
-        class="bg-indigo-900 border-l-4 border-indigo-800 px-4 py-3 lg:w-2/12"
-      >
-        <div class="flex">
-          <div class="py-1 pr-2">
-            <v-mdi name="mdi-pencil" size="24"></v-mdi>
-          </div>
-          <div>
-            <p class="font-bold">{{ activeFile.title }}</p>
-            <p class="text-sm scroll">{{ activeFile.description || 'Click here to add an outline' }}</p>
-            <!-- TODO: characters in this scene -->
-            <!-- TODO: locations in this scene -->
-            <!-- TODO: chapter outline -->
-            <!-- TODO: common keyboard controls help/reminder -->
-            <!-- TODO: created at / last edited at -->
-            <!-- TODO: word count / reader time estimate -->
-            <!-- TODO: main idea, themes, symbols, motifs, key facts -->
-            <!-- TODO: show previous/next chapter links at bottom/top of sidebar -->
-          </div>
-        </div>
-      </div>
-
+      <chapter-details-panel
+        v-if="state.showChapterDetails"
+        v-bind="{ activeFile }"
+        class="lg:w-2/12 w-full lg:block py-4"
+      ></chapter-details-panel>
       <app-editor
         v-bind="{ activeFile }"
         class="lg:w-7/12 w-full lg:block bg-black bg-opacity-10 py-4"
@@ -59,16 +40,18 @@ import AppNav from '~/components/app/AppNav.vue';
 import AppEditor from '~/components/app/AppEditor.vue';
 import AppPreview from '~/components/app/AppPreview.vue';
 import AppSidebar from '~/components/app/AppSidebar.vue';
+import ChapterDetailsPanel from '~/components/app/panels/ChapterDetailsPanel.vue';
 
 export default {
-  components: { AppNav, AppEditor, AppPreview, AppSidebar },
+  components: { AppNav, AppEditor, AppPreview, AppSidebar, ChapterDetailsPanel },
   setup() {
     const store = useStore();
 
     const state = shallowReactive({
-      retrieved: false,
-      showSidebar: false,
-      showPreview: false,
+      retrieved:          false,
+      showSidebar:        false,
+      showPreview:        false,
+      showChapterDetails: true
     });
 
     const activeFile = computed(() => store.getters['files/active']);
@@ -85,7 +68,7 @@ export default {
 
     return {
       state,
-      activeFile,
+      activeFile
     };
   },
 };
