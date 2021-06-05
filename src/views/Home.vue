@@ -3,16 +3,44 @@
     <app-nav @showSidebar="state.showSidebar = true"></app-nav>
     <app-sidebar v-if="state.showSidebar" @close="state.showSidebar = false"></app-sidebar>
     <div v-if="state.retrieved" class="flex relative" style="height: calc(100vh - 64px)">
+
+      <!-- TODO: component-ize this and give it a state.showChapterMeta condition -->
+      <div
+        class="bg-indigo-900 border-r-4 border-indigo-800 px-4 py-3 lg:w-3/12"
+      >
+        <div class="flex">
+          <div class="py-1 pr-2">
+            <v-mdi name="mdi-pencil" size="24"></v-mdi>
+          </div>
+          <div>
+            <p class="font-bold">{{ activeFile.title }}</p>
+            <p class="text-sm scroll">{{ activeFile.description }}</p>
+            <!--
+            <p>
+              TODO: characters in this scene
+            </p>
+            -->
+            <!--
+            <p>
+              TODO: locations in this scene
+            </p>
+            -->
+            <!-- TODO: chapter outline -->
+          </div>
+        </div>
+      </div>
+
       <app-editor
         v-bind="{ activeFile }"
-        class="lg:w-6/12 w-full lg:block bg-black bg-opacity-10 py-4"
+        class="lg:w-7/12 w-full lg:block bg-black bg-opacity-10 py-4"
         :class="{ hidden: state.showPreview }"
       ></app-editor>
       <app-preview
         v-bind="{ file: activeFile }"
-        class="lg:w-6/12 w-full py-4 px-5 overflow-auto scroll lg:block"
+        class="lg:w-5/12 w-full py-4 px-5 overflow-auto scroll lg:block"
         :class="{ hidden: !state.showPreview }"
       ></app-preview>
+      <!-- TODO: add more columns/sidebars here -->
       <ui-button
         icon
         variant="primary"
