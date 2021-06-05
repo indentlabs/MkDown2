@@ -7,12 +7,12 @@
       previous chapter
     </div>
     -->
-    <div class="mt-2">
-      <p class="font-bold">
-        <v-mdi name="mdi-pencil" size="32" class="pb-2"></v-mdi>
+    <div class="mt-2 mb-3">
+      <p class="font-bold mb-2">
+        <v-mdi name="mdi-pencil" size="32"></v-mdi>
         {{ activeFile.title }}
       </p>
-      <p class="text-sm scroll my-4">{{ activeFile.description }}</p>
+      <p class="text-sm scroll">{{ activeFile.description }}</p>
       <!-- TODO: characters in this scene -->
       <!-- TODO: locations in this scene -->
       <!-- TODO: chapter outline -->
@@ -21,6 +21,9 @@
       <!-- TODO: word count / reader time estimate -->
       <!-- TODO: main idea, themes, symbols, motifs, key facts -->
       <!-- TODO: show previous/next chapter links at bottom/top of sidebar -->
+    </div>
+    <div class="text-gray-400 my-2">
+      0 words
     </div>
     <div class="my-3">
       Characters
