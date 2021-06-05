@@ -9,7 +9,6 @@
     <nav-menu-item v-bind="{ items }" class="hidden md:block mr-4" @select="exportFile">
       Export
     </nav-menu-item>
-    <!--
     <nav-menu-item :items="importItems">
       Import
       <template #item="{ name, type }">
@@ -22,7 +21,6 @@
         {{ name }}
       </template>
     </nav-menu-item>
-    -->
     <nav-menu-item :items="settingsItem" hide-arrow class="mx-4">
       <template #trigger>
         <ui-button icon>
