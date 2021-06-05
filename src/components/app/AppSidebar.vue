@@ -16,9 +16,21 @@
           <span class="text-green-500">Your Name</span>
         </p>
       </div>
-      <div class="align-top">
+      <div class="flex flex-col">
         <!-- TODO: switch documents? -->
         <v-mdi name="mdi-close" class="cursor-pointer flex-1" @click="$emit('close')"></v-mdi>
+        <div class="flex-1">&nbsp;</div>
+        <ui-popover>
+          <template #trigger>
+            <v-mdi name="mdi-dots-horizontal" class="cursor-pointer"></v-mdi>
+          </template>
+          <ui-list class="space-y-1">
+            <ui-list-item class="cursor-pointer" @click="console.log('clicked edit')">
+              <v-mdi name="mdi-pencil" class="mr-4 -ml-1"></v-mdi>
+              Edit book title
+            </ui-list-item>
+          </ui-list>
+        </ui-popover>
       </div>
     </div>
     <sidebar-menu class="md:hidden"></sidebar-menu>

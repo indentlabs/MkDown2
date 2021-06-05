@@ -29,7 +29,7 @@ export default {
       () => {
         const activeFile = store.getters['files/active'];
 
-        document.title = activeFile.title;
+        document.title = [activeFile.title, 'Asimov'].join(' - ');
       }
     );
 
