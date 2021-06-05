@@ -1,5 +1,17 @@
 <template>
-  <div ref="container" class="app-editor"></div>
+  <div ref="container" class="app-editor">
+    <div class="bg-indigo-900 border-t-4 border-indigo-800 px-4 py-3 mb-3 shadow-md" role="alert">
+      <div class="flex">
+        <div class="py-1 pr-2">
+          <v-mdi name="mdi-book" size="24"></v-mdi>
+        </div>
+        <div>
+          <p class="font-bold">{{ activeFile.title }}</p>
+          <p class="text-sm">{{ activeFile.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import { ref, onMounted, watch, nextTick } from 'vue';
@@ -34,6 +46,8 @@ export default {
           key: 'content',
           value: editor.getValue(),
         });
+
+        // TODO: update active file word count
       });
     }
 
@@ -41,7 +55,6 @@ export default {
       () => store.state.files.activeFile,
       () => {
         const wrapper = container.value.querySelector('.wrapper');
-
         container.value.removeChild(wrapper);
 
         setTimeout(createInstance, 200);
