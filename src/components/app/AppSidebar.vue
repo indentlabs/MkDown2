@@ -4,7 +4,7 @@
     @click="$emit('close')"
   ></div>
   <div
-    class="bg-gray-800 w-full md:w-72 scroll overflow-auto p-5 absolute left-0 h-full top-0 z-20"
+    class="bg-gray-800 w-full lg:w-96 md:w-72 scroll overflow-auto p-5 absolute left-0 h-full top-0 z-20"
   >
     <div class="mb-8 flex items-center">
       <div class="flex-1">
