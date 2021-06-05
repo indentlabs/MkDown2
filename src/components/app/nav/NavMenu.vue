@@ -5,6 +5,7 @@
       Preview as
     </nav-menu-item>
     -->
+    <!-- TODO: export settings modal -->
     <nav-menu-item v-bind="{ items }" class="hidden md:block mr-4" @select="exportFile">
       Export
     </nav-menu-item>

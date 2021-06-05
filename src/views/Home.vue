@@ -14,7 +14,7 @@
           </div>
           <div>
             <p class="font-bold">{{ activeFile.title }}</p>
-            <p class="text-sm scroll">{{ activeFile.description }}</p>
+            <p class="text-sm scroll">{{ activeFile.description || 'Click here to start building an outline' }}</p>
             <!--
             <p>
               TODO: characters in this scene
@@ -26,6 +26,7 @@
             </p>
             -->
             <!-- TODO: chapter outline -->
+            <!-- TODO: common keyboard controls help/reminder -->
           </div>
         </div>
       </div>

@@ -103,7 +103,7 @@ export default {
         data: {
           title: 'Untitled document',
           description: '',
-          content: "Write as little or as much as you'd like!",
+          content: "# Untitled document\n\nWrite as little or as much as you'd like!",
         },
       });
     }
