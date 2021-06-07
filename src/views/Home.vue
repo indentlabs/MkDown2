@@ -19,7 +19,10 @@
         class="lg:w-5/12 w-full py-4 px-5 overflow-auto scroll lg:block"
         :class="{ hidden: !state.showPreview }"
       ></app-preview>
-      <!-- TODO: add more columns/sidebars here -->
+      <world-panel
+        v-if="state.showWorldPanel"
+        class="lg:w-3/12 w-full lg:block py-4"
+      ></world-panel>
       <ui-button
         icon
         variant="primary"
@@ -42,17 +45,20 @@ import AppPreview from '~/components/app/AppPreview.vue';
 import AppSidebar from '~/components/app/AppSidebar.vue';
 import AppWorldbar from '~/components/app/AppWorldbar.vue';
 import ChapterDetailsPanel from '~/components/app/panels/ChapterDetailsPanel.vue';
+import WorldPanel from '~/components/app/panels/WorldPanel.vue';
 
 export default {
-  components: { AppNav, AppEditor, AppPreview, AppSidebar, AppWorldbar, ChapterDetailsPanel },
+  components: { AppNav, AppEditor, AppPreview, AppSidebar, AppWorldbar, ChapterDetailsPanel, WorldPanel },
   setup() {
     const store = useStore();
 
     const state = shallowReactive({
       retrieved:          false,
+      // TODO: These should all be moved into / read from the settings state
       showSidebar:        false,
       showWorldbar:       false,
       showPreview:        false,
+      showWorldPanel:     true,
       showChapterDetails: true
     });
 
