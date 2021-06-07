@@ -5,7 +5,6 @@
       Preview as
     </nav-menu-item>
     -->
-    <!-- TODO: export settings modal -->
     <nav-menu-item :items="importItems" class="mr-4">
       Import
       <template #item="{ name, type }">
@@ -18,6 +17,7 @@
         {{ name }}
       </template>
     </nav-menu-item>
+    <!-- TODO: export settings modal -->
     <nav-menu-item v-bind="{ items }" class="hidden md:block" @select="exportFile">
       Export
     </nav-menu-item>
@@ -37,7 +37,7 @@
       </template>
     </nav-menu-item>
     <a href="#">
-      <v-mdi name="mdi-wrench"></v-mdi>
+      <v-mdi name="mdi-flash"></v-mdi>
     </a>
   </div>
 </template>
@@ -56,7 +56,11 @@ export default {
     const settingsItem = [
       { id: 'autoSave',   name: 'Auto Save' },
       { id: 'syncScroll', name: 'Sync Scroll' },
-      { id: 'darkTheme',  name: 'Dark Theme' }
+      { id: 'darkTheme',  name: 'Dark Theme' },
+      { id: 'showChapterPanel',  name: 'Show Chapter Panel' },
+      { id: 'showWritingPanel',  name: 'Show Writing Panel' },
+      { id: 'showPreviewPanel',  name: 'Show Preview Panel' },
+      { id: 'showWorldPanel',    name: 'Show World Panel' },
     ];
 
     const settings = computed(() => store.state.settings);
